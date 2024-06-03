@@ -161,34 +161,49 @@ private:
     string name;
     string phone;
     long totalPrice;
-    list<menu*>menulist;    //장바구니 역할
+    list<menu*>menulist;    //장바구니
 public:
-    customer(string _name = "Mega", string _phone = "010-0000-0000") :name(_name), phone(_phone), totalPrice(0) { orderNum++; menulist.clear(); }
-    ~customer() { for (auto& i : menulist) delete i; }
+    customer(string _name = "Mega", string _phone = "010-0000-0000")
+        :name(_name), phone(_phone), totalPrice(0) {
+        orderNum++;
+        menulist.clear();
+        }
+    ~customer() { for (auto& i : menulist)delete i; }
     void login() {
-        cout << " [ 메가 커피 Kiosk ] \n";
-        cout << " (이름과 연락처를 남겨주세요.) \n";
-        cout << "이    름 : ";
+        cout << "[메가 커피 Kiosk]\n";
+        cout << "(이름과 연락처를 남겨주세요.)\n";
+        cout << "이름: ";
         getline(cin, name);
-        cout << "연 락 처 : ";
+        cout << "연락처: ";
         getline(cin, phone);
     }
     void info() {
-        cout << "주문번호 : " << orderNum << endl;
-        cout << "이    름 : " << name << endl;
-        cout << "연 락 처 : " << phone << endl << endl;
+        cout << "주문번호: " << orderNum << endl;
+        cout << "이름: " << name << endl;
+        cout << "연락처: " << phone << endl << endl;
     }
-    void totalmenu() { for (auto& itr : menulist) itr->order(); }
+    void totalmenu() { 
+        //int ary[]{ 1,2,3,4,5,6,7 };
+        //for (int i = 0; i < _countof(ary); i++)
+        //    ary[i];
+        //for (auto& i : ary)
+        //    i;
+        for (auto& itr : menulist)
+            itr->order();
+    }
     void addmenu(menu* item) {
         menulist.push_back(item);
         totalPrice += item->getprice();
     }
     const int totalprice() const { return totalPrice; }
-
-
 };
 unsigned long customer::orderNum;
 int main() {
+    /*menu* sel = nullptr;
+    sel = new frappe("Real chocolate frapper", 3900, "Tall", false, nullptr);
+    cout << sel->getprice() << endl;
+    sel->order();*/
+
     int menu1 = 0, menu2 = 0, menu3 = 0;
     customer* Neworder = new customer;
     Neworder->login();
