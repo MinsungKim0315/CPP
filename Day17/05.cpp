@@ -5,7 +5,7 @@
 #include <map>
 using namespace std;
 
-//달리기 경주
+//Race
 vector<string> solution5(vector<string> players, vector<string> callings) {
     map<string, int> m;
     for (int Rank = 0; Rank < players.size(); Rank++)
