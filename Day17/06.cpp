@@ -5,7 +5,6 @@
 #include <map>
 using namespace std;
 
-//추억 점수
 vector<int> solution6(vector<string> name, vector<int> yearning, vector<vector<string>> photo) {
     vector<int> answer;
     map<string, int> m;
